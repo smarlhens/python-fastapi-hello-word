@@ -1,15 +1,15 @@
 [tool.poetry]
-name = "python-boilerplate"
+name = "python-fastapi-hello-word"
 version = "0.1.0"
-description = "Python boilerplate"
+description = "FastAPI hello-world example API using uvicorn."
 authors = ["Samuel MARLHENS <samuel.marlhens@gmail.com>"]
 packages = [
-    { include = "*", from = "src"}
+    { include = "*", from = "src" }
 ]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/smarlhens/python-boilerplate#readme"
-repository = "https://github.com/smarlhens/python-boilerplate"
+homepage = "https://github.com/smarlhens/python-fastapi-hello-word#readme"
+repository = "https://github.com/smarlhens/python-fastapi-hello-word"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -35,6 +35,9 @@ backend-path = ["src"]
 [tool.pytest.ini_options]
 addopts = "-vvv"
 testpaths = "tests"
+pythonpath = [
+    ".", "src",
+]
 
 [tool.black]
 line_length = 90
@@ -44,7 +47,7 @@ target_version = ['py310']
 skip = ["venv", ".venv"]
 line_length = 90
 profile = "black"
-sections = ["FUTURE","STDLIB","THIRDPARTY","FIRSTPARTY","TESTS","LOCALFOLDER"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "TESTS", "LOCALFOLDER"]
 known_tests = "tests"
 
 [mypy]
