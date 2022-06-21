@@ -69,12 +69,13 @@
    ```bash
    pre-commit install
    ```
+
 5. Start FastAPI app
 
    ```bash
    uvicorn myservice.main:app --host 0.0.0.0 --proxy-headers --forwarded-allow-ips='*' --port 8000
    ```
-   
+
 6. Navigate to docs: [http://0.0.0.0:8000/docs](http://0.0.0.0:8000/docs)
 
 ---
@@ -166,7 +167,7 @@ poetry run pytest tests
 <summary>Output</summary>
 
 ```text
-collected 3 items                                                                                
+collected 3 items
 
 tests/test_myservice.py::test_read_root PASSED                                             [ 33%]
 tests/test_myservice.py::test_read_item_with_id_and_query PASSED                           [ 66%]
@@ -186,7 +187,7 @@ poetry run pytest tests --cov=src
 <summary>Output</summary>
 
 ```text
-collected 3 items                                                                                
+collected 3 items
 
 tests/test_myservice.py::test_read_root PASSED                                             [ 33%]
 tests/test_myservice.py::test_read_item_with_id_and_query PASSED                           [ 66%]

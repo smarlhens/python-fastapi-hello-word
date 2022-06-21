@@ -11,6 +11,7 @@ class Settings(BaseSettings):
 
     debug: bool = False
 
+
 settings = Settings()
 
 if settings.debug:
