@@ -1,9 +1,14 @@
 <p align="center">
-  <a href="https://python-poetry.org/" target="blank"><img src="https://python-poetry.org/images/logo-origami.svg" height="100" alt="Poetry logo" /></a>
-  <a href="https://pre-commit.com/" target="blank"><img src="https://pre-commit.com/logo.svg" height="100" alt="pre-commit logo" /></a>
-  <a href="https://pycqa.github.io/isort/" target="blank"><img src="https://pycqa.github.io/isort/art/logo.png" height="100" alt="isort logo" /></a>
-  <a href="https://bandit.readthedocs.io/" target="blank"><img src="https://raw.githubusercontent.com/pycqa/bandit/main/logo/logo.svg" height="100" alt="bandit logo" /></a>
-  <a href="https://docs.pytest.org/" target="blank"><img src="https://raw.githubusercontent.com/pytest-dev/pytest/main/doc/en/img/pytest_logo_curves.svg" height="100" alt="pytest logo" /></a>
+  <a href="https://fastapi.tiangolo.com/" target="blank"><img src="https://cdn.worldvectorlogo.com/logos/fastapi.svg" height="100" alt="FastAPI logo" /></a>
+  <a href="https://github.com/encode/uvicorn" target="blank"><img src="https://raw.githubusercontent.com/tomchristie/uvicorn/master/docs/uvicorn.png" height="100" alt="uvicorn logo" /></a>
+</p>
+
+<p align="center">
+  <a href="https://python-poetry.org/" target="blank"><img src="https://python-poetry.org/images/logo-origami.svg" height="80" alt="Poetry logo" /></a>
+  <a href="https://pre-commit.com/" target="blank"><img src="https://pre-commit.com/logo.svg" height="80" alt="pre-commit logo" /></a>
+  <a href="https://pycqa.github.io/isort/" target="blank"><img src="https://pycqa.github.io/isort/art/logo.png" height="80" alt="isort logo" /></a>
+  <a href="https://bandit.readthedocs.io/" target="blank"><img src="https://raw.githubusercontent.com/pycqa/bandit/main/logo/logo.svg" height="80" alt="bandit logo" /></a>
+  <a href="https://docs.pytest.org/" target="blank"><img src="https://raw.githubusercontent.com/pytest-dev/pytest/main/doc/en/img/pytest_logo_curves.svg" height="80" alt="pytest logo" /></a>
 </p>
 
 <p align="center">
@@ -11,13 +16,13 @@
   <a href="https://github.com/features/actions" target="blank"><img src="https://avatars.githubusercontent.com/u/44036562" height="60" alt="GitHub Actions logo" /></a>
 </p>
 
-# Python boilerplate
+# Python FastAPI Hello World
 
-[![GitHub CI](https://github.com/smarlhens/python-boilerplate/workflows/ci/badge.svg)](https://github.com/smarlhens/python-boilerplate/actions/workflows/ci.yml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/smarlhens/python-boilerplate/main.svg)](https://results.pre-commit.ci/latest/github/smarlhens/python-boilerplate/main)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/smarlhens/python-boilerplate.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/smarlhens/python-boilerplate/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/smarlhens/python-boilerplate.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/smarlhens/python-boilerplate/context:javascript)
-[![GitHub license](https://img.shields.io/github/license/smarlhens/python-boilerplate)](https://github.com/smarlhens/python-boilerplate)
+[![GitHub CI](https://github.com/smarlhens/python-fastapi-hello-word/workflows/ci/badge.svg)](https://github.com/smarlhens/python-fastapi-hello-word/actions/workflows/ci.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/smarlhens/python-fastapi-hello-word/main.svg)](https://results.pre-commit.ci/latest/github/smarlhens/python-fastapi-hello-word/main)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/smarlhens/python-fastapi-hello-word.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/smarlhens/python-fastapi-hello-word/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/smarlhens/python-fastapi-hello-word.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/smarlhens/python-fastapi-hello-word/context:javascript)
+[![GitHub license](https://img.shields.io/github/license/smarlhens/python-fastapi-hello-word)](https://github.com/smarlhens/python-fastapi-hello-word)
 
 ---
 
@@ -33,7 +38,7 @@
 
 ## Prerequisites
 
-- [Python](https://www.python.org/downloads/) **>=3.10**
+- [Python](https://www.python.org/downloads/) **>=3.10 <3.11** (_tested with 3.10.5_)
 - [pre-commit](https://pre-commit.com/#install)
 - [docker](https://docs.docker.com/get-docker/) (_optional_)
 
@@ -44,13 +49,13 @@
 1. Clone the git repository
 
    ```bash
-   git clone https://github.com/smarlhens/python-boilerplate.git
+   git clone https://github.com/smarlhens/python-fastapi-hello-word.git
    ```
 
 2. Go into the project directory
 
    ```bash
-   cd python-boilerplate/
+   cd python-fastapi-hello-word/
    ```
 
 3. Checkout working branch
@@ -64,6 +69,13 @@
    ```bash
    pre-commit install
    ```
+5. Start FastAPI app
+
+   ```bash
+   uvicorn myservice.main:app --host 0.0.0.0 --proxy-headers --forwarded-allow-ips='*' --port 8000
+   ```
+   
+6. Navigate to docs: [http://0.0.0.0:8000/docs](http://0.0.0.0:8000/docs)
 
 ---
 
@@ -154,9 +166,11 @@ poetry run pytest tests
 <summary>Output</summary>
 
 ```text
-collected 1 item
+collected 3 items                                                                                
 
-tests/test_myapplication.py::test_hello_world PASSED
+tests/test_myservice.py::test_read_root PASSED                                             [ 33%]
+tests/test_myservice.py::test_read_item_with_id_and_query PASSED                           [ 66%]
+tests/test_myservice.py::test_read_item_with_id_without_query PASSED                       [100%]
 ```
 
 </details>
@@ -172,17 +186,20 @@ poetry run pytest tests --cov=src
 <summary>Output</summary>
 
 ```text
-collected 1 item
+collected 3 items                                                                                
 
-tests/test_myapplication.py::test_hello_world PASSED
+tests/test_myservice.py::test_read_root PASSED                                             [ 33%]
+tests/test_myservice.py::test_read_item_with_id_and_query PASSED                           [ 66%]
+tests/test_myservice.py::test_read_item_with_id_without_query PASSED                       [100%]
 
 ---------- coverage: platform linux, python 3.10.4-final-0 -----------
-Name                            Stmts   Miss  Cover
----------------------------------------------------
-src/myapplication/__init__.py       1      0   100%
-src/myapplication/main.py           6      2    67%
----------------------------------------------------
-TOTAL                               7      2    71%
+Name                        Stmts   Miss  Cover
+-----------------------------------------------
+src/myservice/__init__.py       1      0   100%
+src/myservice/main.py          15      0   100%
+src/myservice/settings.py       8      0   100%
+-----------------------------------------------
+TOTAL                          24      0   100%
 ```
 
 </details>
@@ -193,34 +210,30 @@ TOTAL                               7      2    71%
 
 ### Build
 
-To build the docker image using [`Dockerfile`](Dockerfile):
+To build the docker `production` image using [`Dockerfile`](Dockerfile):
 
 ```bash
-docker build . -t my-python-application:latest
+docker build . -t my-fastapi-application:latest
+```
+
+To build the docker `development` image using [`Dockerfile`](Dockerfile):
+
+```bash
+docker build . --target development -t my-fastapi-application:dev
 ```
 
 ### Run
 
-To run the python app example inside Docker:
+To run the FastAPI production app example using Docker:
 
 ```bash
-docker run -it --rm my-python-application:latest
+docker run -p 8000:8000 -it --rm my-fastapi-application:latest # or :dev for development
 ```
-
-<details>
-
-<summary>Output</summary>
-
-```text
-Hello World
-```
-
-</details>
 
 ### Execute command inside container
 
 ```bash
-docker run -it --rm my-python-application:latest bash
+docker run -p 8000:8000 -it --rm --entrypoint /bin/bash my-fastapi-application:lastest # or :dev for development
 ```
 
 ---

@@ -45,6 +45,6 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
       - name: Run application
-        run: poetry run myapplication
+        run: poetry run myservice
       - name: Test with pytest
         run: poetry run pytest tests --cov=src

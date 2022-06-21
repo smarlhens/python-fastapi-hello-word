@@ -24,20 +24,26 @@ COPY ./poetry.lock ./pyproject.toml ./
 RUN poetry install --no-root --no-dev
 
 FROM builder-base as development
+ENV POETRY_VIRTUALENVS_IN_PROJECT=None \
+    FASTAPI_ENV=development \
+    PYTHONPATH="$PYSETUP_PATH/src"
 
 RUN poetry install --no-root
 
 COPY . .
 
-RUN poetry install
+RUN chmod 555 ./src/entrypoint.sh
 
-CMD ["python","-m", "myapplication.main"]
+EXPOSE 8000
+ENTRYPOINT ["/opt/pysetup/src/entrypoint.sh"]
+
 
 FROM python-base as production
-
+ENV FASTAPI_ENV=production \
+    PYTHONPATH="$PYSETUP_PATH"
 COPY --from=builder-base $VENV_PATH $VENV_PATH
 WORKDIR $PYSETUP_PATH
 COPY ./src/ ./
 USER 10000
 
-CMD ["python","-m", "myapplication.main"]
+ENTRYPOINT ["/opt/pysetup/entrypoint.sh"]
