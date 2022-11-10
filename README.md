@@ -18,10 +18,9 @@
 
 # Python FastAPI Hello World
 
+[![CodeQL](https://github.com/smarlhens/python-fastapi-hello-word/workflows/codeql/badge.svg)](https://github.com/smarlhens/python-fastapi-hello-word/actions/workflows/codeql.yml)
 [![GitHub CI](https://github.com/smarlhens/python-fastapi-hello-word/workflows/ci/badge.svg)](https://github.com/smarlhens/python-fastapi-hello-word/actions/workflows/ci.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/smarlhens/python-fastapi-hello-word/main.svg)](https://results.pre-commit.ci/latest/github/smarlhens/python-fastapi-hello-word/main)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/smarlhens/python-fastapi-hello-word.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/smarlhens/python-fastapi-hello-word/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/smarlhens/python-fastapi-hello-word.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/smarlhens/python-fastapi-hello-word/context:javascript)
 [![GitHub license](https://img.shields.io/github/license/smarlhens/python-fastapi-hello-word)](https://github.com/smarlhens/python-fastapi-hello-word)
 
 ---
